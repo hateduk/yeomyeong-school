@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>여명학교 의견 보내기</title>
+<meta name="description" content="여명학교 교사 건립을 지지하는 시민이 서울시교육청과 서울시의회 교육위원회에 보낼 의견을 1분 안에 만드는 페이지">
+<meta property="og:title" content="여명학교 의견 보내기">
+<meta property="og:description" content="22년째 건물 없이 떠돈 여명학교, 2027년 2월이면 임시 교실도 잃습니다. 1분 만에 의견을 보내 주세요.">
+<meta property="og:type" content="website">
+<style>body{margin:0}</style>
+</head>
+<body>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 한 열(최대 44rem). 위에서부터 요약 → 의견 쓰기 도구 → 근거 → 공유. 도구가 이 페이지의 본업이라 첫 화면 가까이에 둔다. */
+:root{
+  --bg:#F2F6F5;
+  --surface:#FFFFFF;
+  --fg:#12201F;
+  --muted:#4F6462;
+  --line:#CFDBD9;
+  --teal:#0F4C4A;
+  --teal-ink:#FFFFFF;
+  --accent:#C86B3C;
+  --accent-soft:#F6E4D9;
+  --focus:#C86B3C;
+  --font-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1514;--surface:#122220;--fg:#E7F0EE;--muted:#9DB5B1;--line:#264240;
+    --teal:#5FB5AF;--teal-ink:#06201F;--accent:#E8905F;--accent-soft:#3A2418;--focus:#E8905F;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1514;--surface:#122220;--fg:#E7F0EE;--muted:#9DB5B1;--line:#264240;
+  --teal:#5FB5AF;--teal-ink:#06201F;--accent:#E8905F;--accent-soft:#3A2418;--focus:#E8905F;
+  color-scheme:dark;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:0 48px;word-break:keep-all;overflow-wrap:anywhere}
+*{box-sizing:border-box}
+.wrap{max-width:44rem;margin-inline:auto;display:flex;flex-direction:column;gap:40px}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+h1,h2,h3{text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+
+header.hero{padding-top:32px;display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.08em;color:var(--accent)}
+h1{font-size:clamp(1.9rem,6.4vw,2.9rem);font-weight:900;color:var(--teal);letter-spacing:-.02em}
+.lede{font-size:1.1rem;color:var(--fg);max-width:36rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.stat{background:var(--surface);padding:14px 16px;min-width:0}
+.stat b{display:block;font-size:1.6rem;font-weight:900;color:var(--teal);line-height:1.2;font-variant-numeric:tabular-nums}
+.stat span{font-size:.85rem;color:var(--muted)}
+
+section{display:flex;flex-direction:column;gap:16px}
+h2{font-size:1.4rem;font-weight:900;color:var(--teal)}
+.sub{color:var(--muted);font-size:.95rem}
+
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:20px;box-shadow:0 1px 0 var(--line)}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field>label,.field>legend{font-weight:700;font-size:.9rem}
+fieldset{border:0;padding:0;margin:0;min-width:0}
+.seg{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:8px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{display:flex;flex-direction:column;gap:2px;border:1.5px solid var(--line);border-radius:6px;padding:12px 14px;cursor:pointer;background:var(--bg)}
+.seg label b{font-size:1rem}
+.seg label small{color:var(--muted);font-size:.82rem;line-height:1.4}
+.seg input:checked+label{border-color:var(--teal);background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--teal)}
+.seg input:focus-visible+label{outline:3px solid var(--focus);outline-offset:2px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:12px}
+input[type=text],textarea{font:inherit;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:6px;padding:10px 12px;width:100%;min-width:0}
+textarea{min-height:19rem;line-height:1.75;resize:vertical}
+.hint{font-size:.82rem;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font:inherit;font-weight:700;border-radius:6px;padding:11px 18px;border:1.5px solid var(--teal);background:var(--teal);color:var(--teal-ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;line-height:1.3}
+.btn.alt{background:transparent;color:var(--teal)}
+.btn:hover{filter:brightness(1.08)}
+.status{min-height:1.4em;font-size:.9rem;font-weight:700;color:var(--teal)}
+.note{border-left:4px solid var(--accent);background:var(--accent-soft);padding:12px 14px;border-radius:0 6px 6px 0;font-size:.9rem}
+
+.asks{display:flex;flex-direction:column;gap:12px;padding:0;margin:0;list-style:none}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px}
+.ask .who{grid-column:1;font-size:.78rem;font-weight:700;color:var(--accent);letter-spacing:.04em;white-space:nowrap}
+.ask p{grid-column:2}
+.ask .num{grid-column:1;font-weight:900;font-size:1.05rem;color:var(--teal)}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:12px;padding:0;margin:0;list-style:none}
+.facts li{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.facts b{color:var(--teal)}
+.facts span{font-size:.92rem}
+
+.cost{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.bar{display:flex;height:34px;border-radius:4px;overflow:hidden;font-size:.8rem;font-weight:700}
+.bar div{display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.bar .a{background:var(--teal);color:var(--teal-ink);flex:100}
+.bar .b{background:var(--accent);color:#fff;flex:60}
+.bar .c{background:repeating-linear-gradient(45deg,var(--line),var(--line) 4px,var(--bg) 4px,var(--bg) 8px);color:var(--muted);flex:0 0 3.2rem;font-size:.72rem}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.85rem;color:var(--muted)}
+
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:10px}
+.links a{border:1.5px solid var(--line);background:var(--surface);border-radius:6px;padding:12px 14px;text-decoration:none;color:var(--fg);display:flex;flex-direction:column;gap:2px}
+.links a b{color:var(--teal)}
+.links a small{color:var(--muted)}
+.links a:hover{border-color:var(--teal)}
+.share{display:flex;flex-direction:column;gap:10px}
+.sharebox{background:var(--surface);border:1px dashed var(--teal);border-radius:6px;padding:12px 14px;font-size:.95rem;user-select:all}
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:6px}
+@media (prefers-reduced-motion:no-preference){.btn{transition:filter .15s}}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">여명학교 현 부지 학교 건립을 지지하는 시민사회 공동행동</div>
+    <h1>탈북 청소년이 배울 교실, 예정대로 지어 주십시오</h1>
+    <p class="lede">여명학교는 22년째 자기 건물 없이 임대 공간을 옮겨 다녔습니다. 임시 교실은 2027년 2월에 임차가 끝납니다. 서울시교육청과 서울시의회 교육위원회에 보낼 의견을 이 페이지에서 1분 안에 만들 수 있습니다.</p>
+    <div class="stats" aria-label="핵심 수치">
+      <div class="stat"><b>22년</b><span>건물 없이 이전한 기간</span></div>
+      <div class="stat"><b>160억 원</b><span>건립비, 전액 민간 재원</span></div>
+      <div class="stat"><b>10.8%</b><span>건물이 차지하는 부지 비율</span></div>
+      <div class="stat"><b>2027.2</b><span>임시 교실 임차 만료</span></div>
+    </div>
+  </header>
+
+  <section id="write" aria-labelledby="h-write">
+    <h2 id="h-write">내 의견 만들기</h2>
+    <p class="sub">받는 곳을 고르고 이름과 사는 지역을 적으면 문안이 만들어집니다. 문안은 고쳐 써도 됩니다. 복사한 뒤 아래 접수처에 붙여 넣으세요.</p>
+    <div class="tool">
+      <fieldset class="field">
+        <legend>어디에 보낼까요?</legend>
+        <div class="seg">
+          <div><input type="radio" name="target" id="t-edu" value="edu" checked><label for="t-edu"><b>서울시교육청</b><small>교사 건립을 예정대로 추진하고, 2027년 2월 이후 대책을 밝혀 달라고 요청</small></label></div>
+          <div><input type="radio" name="target" id="t-council" value="council"><label for="t-council"><b>서울시의회 교육위원회</b><small>11월 회기에 관련 안건을 지체 없이 의결해 달라고 요청</small></label></div>
+        </div>
+      </fieldset>
+      <div class="row">
+        <div class="field"><label for="f-name">이름</label><input type="text" id="f-name" placeholder="예: 김민지" autocomplete="off"></div>
+        <div class="field"><label for="f-region">사는 지역</label><input type="text" id="f-region" placeholder="예: 서울 마포구" autocomplete="off"></div>
+      </div>
+      <div class="field">
+        <label for="f-own">내 한 줄 (선택)</label>
+        <input type="text" id="f-own" placeholder="예: 저도 아이를 키우는 부모로서 응원합니다." autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="f-msg">보낼 문안</label>
+        <textarea id="f-msg" spellcheck="false"></textarea>
+        <span class="hint">직접 고친 내용은 위 항목을 바꿀 때 새 문안으로 바뀝니다. 고친 문안을 지키려면 먼저 복사하세요.</span>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn" id="b-copy">문안 복사하기</button>
+        <button type="button" class="btn alt" id="b-reset">문안 다시 만들기</button>
+      </div>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+      <p class="note">이름과 지역은 이 기기에서 문안을 만드는 데만 쓰이고, 어디에도 전송되거나 저장되지 않습니다.</p>
+    </div>
+
+    <h3 style="font-size:1rem;color:var(--fg)">복사한 문안을 붙여 넣을 곳</h3>
+    <div class="links">
+      <a href="https://www.sen.go.kr" target="_blank" rel="noopener"><b>서울시교육청 누리집</b><small>민원·교육감에게 바란다 메뉴에서 접수</small></a>
+      <a href="https://www.smc.seoul.kr" target="_blank" rel="noopener"><b>서울시의회 누리집</b><small>교육위원회·의견 접수 메뉴에서 접수</small></a>
+      <a href="https://eungdapso.seoul.go.kr" target="_blank" rel="noopener"><b>서울시 응답소</b><small>서울시 민원 통합 창구</small></a>
+    </div>
+    <p class="hint">누리집 개편으로 메뉴 이름이 다를 수 있습니다. 접수 메뉴가 보이지 않으면 사이트 검색창에 "민원"을 입력하세요.</p>
+  </section>
+
+  <section aria-labelledby="h-ask">
+    <h2 id="h-ask">우리의 3대 요구</h2>
+    <ol class="asks">
+      <li class="ask"><span class="num">1</span><p><b>서울시교육청</b>은 4자 업무협약에 따른 교사 건립을 예정대로 추진하고, 남은 행정절차의 일정을 공개할 것</p></li>
+      <li class="ask"><span class="num">2</span><p><b>서울시교육청</b>은 2027년 2월 임차 만료 이후 교육 공백을 막을 대책을 밝히고, 탈북 청소년 교육에 대한 공적 책임을 적극적으로 감당할 것</p></li>
+      <li class="ask"><span class="num">3</span><p><b>서울시의회</b>는 11월 회기 내에 여명학교 교사 건립 관련 공유재산 관리계획을 교육권의 관점에서 지체 없이 심의·의결할 것</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-fact">
+    <h2 id="h-fact">알아 두면 좋은 사실</h2>
+    <div class="cost">
+      <b>건립비 약 160억 원의 출처</b>
+      <div class="bar" role="img" aria-label="여명학교 모금 100억 원, 현대자동차그룹 지원 60억 원, 공공 재원 0원">
+        <div class="a">여명학교 모금 100억</div><div class="b">현대차그룹 60억</div><div class="c">공공 0원</div>
+      </div>
+      <div class="legend"><span>여명학교가 20년 넘게 모은 발전기금 100억 원</span><span>현대자동차그룹 지원 60억 원</span></div>
+      <span class="hint">건물은 완공과 동시에 서울시교육청에 기부채납하고, 여명학교는 20년간 사용합니다.</span>
+    </div>
+    <ul class="facts">
+      <li><b>부지의 10.8%</b><span>옛 염강초 부지 11,076.5㎡ 가운데 교사가 차지하는 비율입니다. 유아교육진흥원은 당초 계획보다 1,000㎡ 늘려 들어섭니다.</span></li>
+      <li><b>주차장·운동장 유지</b><span>기존 주차장은 건물 1층을 기둥 위에 올려 그대로 쓰도록 설계했습니다. 운동장은 학교 부지에 포함되지 않습니다.</span></li>
+      <li><b>4자 업무협약 (2026.7.24)</b><span>통일부, 서울시교육청, 현대자동차그룹, 여명학교가 현 부지에 학교 건물을 짓기로 협약했습니다.</span></li>
+      <li><b>3만 명의 1차 시민 서명</b><span>9월 28일부터 10월 7일까지 SNS로 모였고, 10월 7일 명부를 서울시의회와 서울시교육청에 전달했습니다.</span></li>
+    </ul>
+    <p class="hint">수치의 출처: 2026년 10월 7일 여명학교 현 부지 학교 건립 촉구 시민사회 공동행동 기자회견문.</p>
+  </section>
+
+  <section aria-labelledby="h-share">
+    <h2 id="h-share">주변에 알려 주세요</h2>
+    <div class="share">
+      <p class="sub">아래 문구를 복사해 카카오톡, 밴드, 문자로 보내 주세요. 이 페이지 주소를 함께 붙이면 받는 분이 바로 의견을 만들 수 있습니다.</p>
+      <div class="sharebox" id="sharetext">22년째 건물 없이 떠돈 여명학교 학생들이 2027년 2월이면 임시 교실도 잃습니다. 건립비 160억 원은 전액 민간이 마련했습니다. 서울시교육청과 서울시의회에 1분 만에 의견을 보낼 수 있습니다.</div>
+      <div class="actions">
+        <button type="button" class="btn" id="b-share">공유 문구 복사하기</button>
+        <button type="button" class="btn alt" id="b-link">이 페이지 주소 복사하기</button>
+      </div>
+      <div class="status" id="status2" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>시안입니다. 문구와 수치는 공동행동 담당자의 확인을 거친 뒤 공개하세요.</span>
+    <span>이 페이지는 서명을 모으지 않습니다. 서명 명부는 공동행동의 서명 페이지에서 관리합니다.</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var msg=$('f-msg'), nameEl=$('f-name'), regionEl=$('f-region'), ownEl=$('f-own');
+  var FACT='건립비 약 160억 원은 여명학교가 20년 넘게 모은 100억 원과 현대자동차그룹이 지원한 60억 원으로, 전액 민간 재원입니다. 건물은 옛 염강초 부지 11,076.5㎡ 가운데 10.8%에 짓고, 완공과 동시에 서울시교육청에 기부채납합니다. 현재 쓰는 임시 교실은 2027년 2월에 임차 기간이 끝납니다.';
+
+  function target(){return document.querySelector('input[name=target]:checked').value}
+  function build(){
+    var name=nameEl.value.trim(), region=regionEl.value.trim(), own=ownEl.value.trim();
+    var who=(region?region+'에 사는 ':'')+(name||'시민');
+    var sign=name?name+' 드림':'시민 드림';
+    var t=target(), L=[];
+    if(t==='edu'){
+      L.push('서울시교육감님께');
+      L.push('');
+      L.push('저는 '+who+'입니다. 옛 염강초 부지에 짓기로 한 여명학교 교사 건립을 예정대로 추진해 주시기를 요청드립니다.');
+      L.push('');
+      L.push(FACT);
+      L.push('');
+      L.push('다음 두 가지를 요청드립니다.');
+      L.push('1. 4자 업무협약에 따른 교사 건립을 예정대로 추진하고, 남은 행정절차의 일정을 공개해 주십시오.');
+      L.push('2. 2027년 2월 임차 만료 이후 교육 공백을 막을 대책을 밝히고, 탈북 청소년 교육에 대한 공적 책임을 적극적으로 감당해 주십시오.');
+    }else{
+      L.push('서울시의회 교육위원회 위원장님과 위원님들께');
+      L.push('');
+      L.push('저는 '+who+'입니다. 여명학교 교사 건립과 관련한 공유재산 관리계획을 이번 11월 회기에 지체 없이 심의하고 의결해 주시기를 요청드립니다.');
+      L.push('');
+      L.push(FACT);
+      L.push('');
+      L.push('서울시교육청이 설계와 착공으로 나아가려면 교육위원회의 심의와 의결이 필요합니다. 임차 만료까지 시간이 많지 않습니다. 학생들의 배울 권리를 교육권의 관점에서 판단해 주시기를 바랍니다.');
+    }
+    if(own){L.push('');L.push(own);}
+    L.push('');
+    L.push('감사합니다.');
+    L.push(sign);
+    return L.join('\n');
+  }
+  function refresh(){msg.value=build();}
+  function say(el,text){el.textContent=text;clearTimeout(el._t);el._t=setTimeout(function(){el.textContent='';},4000);}
+  function copy(text,el,node,okText){
+    function fallback(){
+      try{
+        node.focus();
+        if(node.select){node.select();}else{var r=document.createRange();r.selectNodeContents(node);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+        say(el,'자동 복사가 막혀 있습니다. 선택된 글을 길게 눌러 복사하거나 Ctrl+C를 누르세요.');
+      }catch(e){say(el,'복사하지 못했습니다. 글을 직접 선택해 복사하세요.');}
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){say(el,okText);},fallback);
+    }else{fallback();}
+  }
+  document.querySelectorAll('input[name=target]').forEach(function(r){r.addEventListener('change',refresh);});
+  [nameEl,regionEl,ownEl].forEach(function(e){e.addEventListener('input',refresh);});
+  $('b-reset').addEventListener('click',function(){refresh();say($('status'),'문안을 새로 만들었습니다.');});
+  $('b-copy').addEventListener('click',function(){copy(msg.value,$('status'),msg,'복사했습니다. 접수처에 붙여 넣으세요.');});
+  $('b-share').addEventListener('click',function(){copy($('sharetext').textContent,$('status2'),$('sharetext'),'공유 문구를 복사했습니다.');});
+  $('b-link').addEventListener('click',function(){
+    var url=location.href.split('#')[0];
+    copy(url,$('status2'),$('sharetext'),'이 페이지 주소를 복사했습니다.');
+  });
+  refresh();
+})();
+</script>
+
+</body>
+</html>
